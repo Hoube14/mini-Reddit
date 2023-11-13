@@ -24,4 +24,3 @@ function fetchPosts(posts) {
     }
 }
 
-list.classlist.add("allPosts");
