@@ -1,12 +1,20 @@
 body {
     background-color: rgb(19, 22, 32);
-    color: white;
+    color: wheat;
 }
 
 
 input {
     background-color: rgb(63, 63, 63);
     color: black;
+    position: fixed;
+    top: 2.5rem;
+    left: 70rem;
+}
+
+.h1-top {
+    padding: 0;
+    margin: 0;
 }
 
 .sidenav {
@@ -48,10 +56,6 @@ input {
 
 }
 
-.h1-top {
-    padding: 0;
-    margin: 0;
-}
 
 #main-container {
     margin-left: 20rem;
@@ -61,4 +65,5 @@ input {
 li {
     list-style-type: none;
     padding: 0.5rem;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }

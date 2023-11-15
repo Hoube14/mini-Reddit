@@ -23,3 +23,11 @@ function fetchPosts(posts) {
     }
 }
 
+let div = document.createElement("div");
+let postButton = document.createElement("button");
+
+
+postButton.innerText = "Create post!";
+
+div.append(postButton);
+document.body.append(div);
