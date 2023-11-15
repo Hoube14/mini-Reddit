@@ -3,6 +3,45 @@ body {
     color: white;
 }
 
+
+input {
+    background-color: rgb(63, 63, 63);
+    color: black;
+}
+
+.sidenav {
+    height: 100%;
+    width: 20rem;
+    position: fixed;
+    overflow-x: hidden;
+    padding-top: 20rem;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+  }
+
+  .sidenav-two {
+    height: 100%;
+    width: 20rem;
+    position: fixed;
+    overflow-x: hidden;
+    padding-top: 40rem;
+}
+
+.sidenav-two a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+  }
+
+
 .button-container {
     display: flex;
     justify-content: end;
@@ -12,6 +51,11 @@ body {
 .h1-top {
     padding: 0;
     margin: 0;
+}
+
+#main-container {
+    margin-left: 20rem;
+    margin-right: 20rem;
 }
 
 li {
