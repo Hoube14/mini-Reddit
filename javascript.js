@@ -1,4 +1,3 @@
-let posts = document.getElementById("postList");
 
 fetch('https://dummyjson.com/posts')
     .then(function (res) {
@@ -11,7 +10,7 @@ function fetchPosts(posts) {
     // DOM
     // Document Object Model
 
-    let list = document.createElement("ul");
+    let list = document.getElementById("main-container");
     document.body.append(list);
 
     for (let i = 0; i < posts.length; i++) {

@@ -1,3 +1,8 @@
+body {
+    background-color: rgb(19, 22, 32);
+    color: white;
+}
+
 .button-container {
     display: flex;
     justify-content: end;
@@ -9,3 +14,7 @@
     margin: 0;
 }
 
+li {
+    list-style-type: none;
+    padding: 0.5rem;
+}
