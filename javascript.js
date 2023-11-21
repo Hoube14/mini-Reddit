@@ -1,3 +1,10 @@
+let postsList = [];
+let postButton = document.getElementById('postButton');
+let postInput = document.getElementById('postInput');
+let submitButton = document.getElementById('submitButton');
+let postedMessages = document.getElementById('postedMessages');
+
+
 
 fetch('https://dummyjson.com/posts')
     .then(function (res) {
@@ -5,6 +12,9 @@ fetch('https://dummyjson.com/posts')
     }).then(function (res) {
         fetchPosts(res.posts);
     });
+
+
+
 
 function fetchPosts(posts) {
     // DOM
@@ -15,24 +25,14 @@ function fetchPosts(posts) {
 
     for (let i = 0; i < posts.length; i++) {
         let post = posts[i];
+        postsList.push(post);
 
         let li = document.createElement("li");
         list.append(li);
 
-        li.innerHTML = `<div id="card-${i}">
-        <h2 id="card-title-${i}">${post.title}</h2>
-        <p id="card-body-${i}">${post.body}</p>
-        <a id="card-tags-${i}">${post.tags}</a>
-        </div>`
+        li.innerHTML = createPost(post);
     }
 }
-
-let postButton = document.getElementById('postButton');
-let postInput = document.getElementById('postInput');
-let submitButton = document.getElementById('submitButton');
-let postedMessages = document.getElementById('postedMessages');
-
-let createPost = [];
 
 
 function postMessage() {
@@ -42,12 +42,10 @@ function postMessage() {
         body: postInput.value,
     };
 
+    postsList.push(post);
+
     let li = document.createElement("li");
-    li.innerHTML = `<div id="card-">
-        <h2 id="card-title">${post.title}</h2>
-        <p id="card-body">${post.body}</p>
-        <a id="card-tags">${post.tags}</a>
-        </div>`
+    li.innerHTML = createPost(post);
 
 
     document.getElementById("main-container").prepend(li);
@@ -56,25 +54,19 @@ function postMessage() {
 
 submitButton.addEventListener('click', postMessage);
 
-
-
-/*
-let div = document.createElement("div");
-let postButton = document.createElement("button");
-
-
-postButton.innerText = "Create post!";
-
-div.append(postButton);
-document.body.append(div);
-
-let createPost = [];
-
-postButton.addEventListener("click", function (newPosts) {
-
-})
-
-function newPosts(){
+function likePost() {
 
 }
-*/
+
+function createPost(post) {
+
+    return `<div id="card-">
+        <h2 id="card-title">${post.title}</h2>
+        <p id="card-body">${post.body}</p>
+        <a id="card-tags">${post.tags}</a>
+        <a id="card-reactions">${post.reactions}</a>
+        <button id="like-button">Like</button
+
+        </div>`
+}
+
