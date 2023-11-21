@@ -24,13 +24,11 @@
         </div>
 
 
-
     </header>
 
     <nav>
 
         <div id="mySidenav" class="sidenav"> Topics
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="#">Gaming</a>
             <a href="#">Sports</a>
             <a href="#">Business</a>
@@ -38,7 +36,6 @@
         </div>
 
         <div class="sidenav-two"> Resources
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="#">About Mini-Reddit</a>
             <a href="#">Advertise</a>
             <a href="#">Help</a>
@@ -46,6 +43,19 @@
         </div>
 
     </nav>
+
+
+    <div id="postForm">
+        <input type="text" id="postTitle" placeholder="Title...">
+        <input type="text" id="postInput" placeholder="Text...">
+        <input type="text" id="postTags" placeholder="Tags...">
+        <button id="submitButton">Post</button>
+    </div>
+
+    <div id="postedMessages">
+        <!-- Här visas de inlägg som användaren postar -->
+    </div>
+
 
     <div id="main-container"></div>
 
