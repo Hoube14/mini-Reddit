@@ -13,9 +13,6 @@ fetch('https://dummyjson.com/posts')
         fetchPosts(res.posts);
     });
 
-
-
-
 function fetchPosts(posts) {
     // DOM
     // Document Object Model
@@ -54,9 +51,7 @@ function postMessage() {
 
 submitButton.addEventListener('click', postMessage);
 
-function likePost() {
-
-}
+like - button.addEventListener("click", post.reactions);
 
 function createPost(post) {
 
@@ -66,7 +61,6 @@ function createPost(post) {
         <a id="card-tags">${post.tags}</a>
         <a id="card-reactions">${post.reactions}</a>
         <button id="like-button">Like</button
-
         </div>`
 }
 
