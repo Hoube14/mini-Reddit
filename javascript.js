@@ -5,7 +5,6 @@ let submitButton = document.getElementById('submitButton');
 let postedMessages = document.getElementById('postedMessages');
 
 
-
 fetch('https://dummyjson.com/posts')
     .then(function (res) {
         return res.json();
@@ -51,7 +50,7 @@ function postMessage() {
 
 submitButton.addEventListener('click', postMessage);
 
-like - button.addEventListener("click", post.reactions);
+
 
 function createPost(post) {
 
