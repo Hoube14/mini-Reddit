@@ -27,15 +27,24 @@ function fetchPosts(posts) {
         list.append(li);
 
         li.innerHTML = createPost(post);
+
+
     }
+
 }
 
+function localStorage(post) {
+    localStorage.setitem();
+    localStorage.setitem();
+    localStorage.setitem();
+    localStorage.setitem();
+}
 
 function postMessage() {
     let post = {
         title: postTitle.value,
-        tags: postTags.value,
         body: postInput.value,
+        tags: postTags.value,
     };
 
     postsList.push(post);
@@ -47,10 +56,7 @@ function postMessage() {
     document.getElementById("main-container").prepend(li);
 
 }
-
-submitButton.addEventListener('click', postMessage);
-
-
+submitButton.addEventListener("click", postMessage)
 
 function createPost(post) {
 
@@ -59,7 +65,8 @@ function createPost(post) {
         <p id="card-body">${post.body}</p>
         <a id="card-tags">${post.tags}</a>
         <a id="card-reactions">${post.reactions}</a>
-        <button id="like-button">Like</button
+        <button id="likeButton">Like</button
         </div>`
-}
 
+
+}
