@@ -4,6 +4,22 @@ let postInput = document.getElementById('postInput');
 let submitButton = document.getElementById('submitButton');
 let postedMessages = document.getElementById('postedMessages');
 
+let posts = [];
+
+let localPosts = localStorage.getItem("posts");
+if (localPosts !== null) {
+    posts = JSON.parse(localPosts);
+    fetchPosts(posts);
+} else {
+    postMessage();
+}
+
+function storePosts(posts) {
+    localStorage.setItem("posts", JSON.stringify(posts));
+    console.log(localStorage);
+}
+
+
 
 fetch('https://dummyjson.com/posts')
     .then(function (res) {
@@ -28,26 +44,20 @@ function fetchPosts(posts) {
 
         li.innerHTML = createPost(post);
 
-        storage(posts[i]);
     }
 
 }
 
-function storage(post) {
-    localStorage.setItem("userTitles", post.title)
-    localStorage.setItem("userBody", post.body)
-    localStorage.setItem("userTags", post.tags)
-    localStorage.setItem("userReactions", post.reactions)
-    console.log(localStorage);
-}
 
 function postMessage() {
     let post = {
         title: postTitle.value,
         body: postInput.value,
         tags: postTags.value,
+        reactions: 0,
     };
-
+    posts.push(post);
+    storePosts(posts);
     postsList.push(post);
 
     let li = document.createElement("li");
@@ -68,6 +78,5 @@ function createPost(post) {
         <a id="card-reactions">${post.reactions}</a>
         <button id="likeButton">Like</button
         </div>`
-
 
 }
