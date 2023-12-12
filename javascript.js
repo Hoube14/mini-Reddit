@@ -28,7 +28,7 @@ function fetchPosts(posts) {
 
         li.innerHTML = createPost(post);
 
-
+        storage(posts[i]);
     }
 
 }
@@ -38,7 +38,7 @@ function storage(post) {
     localStorage.setItem("userBody", post.body)
     localStorage.setItem("userTags", post.tags)
     localStorage.setItem("userReactions", post.reactions)
-    console.log(storage);
+    console.log(localStorage);
 }
 
 function postMessage() {
