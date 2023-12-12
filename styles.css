@@ -7,10 +7,11 @@ body {
 input {
     background-color: rgb(63, 63, 63);
     color: black;
-    position: fixed;
     top: 2.5rem;
     left: 70rem;
 }
+
+#postButton {}
 
 .h1-top {
     padding: 0;
@@ -22,7 +23,7 @@ input {
     width: 20rem;
     position: fixed;
     overflow-x: hidden;
-    padding-top: 20rem;
+    margin-top: 20rem;
 }
 
 .sidenav a {
@@ -31,14 +32,14 @@ input {
     font-size: 25px;
     color: #818181;
     display: block;
-  }
+}
 
-  .sidenav-two {
+.sidenav-two {
     height: 100%;
     width: 20rem;
     position: fixed;
     overflow-x: hidden;
-    padding-top: 40rem;
+    margin-top: 40rem;
 }
 
 .sidenav-two a {
@@ -47,7 +48,7 @@ input {
     font-size: 25px;
     color: #818181;
     display: block;
-  }
+}
 
 
 .button-container {
@@ -65,5 +66,5 @@ input {
 li {
     list-style-type: none;
     padding: 0.5rem;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
