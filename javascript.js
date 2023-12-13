@@ -3,7 +3,8 @@ let postButton = document.getElementById('postButton');
 let postInput = document.getElementById('postInput');
 let submitButton = document.getElementById('submitButton');
 let postedMessages = document.getElementById('postedMessages');
-let likeCount = 0;
+
+
 
 let posts = [];
 
@@ -12,7 +13,7 @@ if (localPosts !== null) {
     posts = JSON.parse(localPosts);
     fetchPosts(posts);
 } else {
-    createPost(posts);
+    postMessage(posts);
 }
 
 function storePosts(posts) {
@@ -45,8 +46,9 @@ function fetchPosts(posts) {
 
     }
 
-
 }
+
+
 
 function postMessage() {
     let post = {
@@ -60,9 +62,9 @@ function postMessage() {
     storePosts(posts);
     postsList.push(post);
 
+
     let li = document.createElement("li");
     li.innerHTML = createPost(post);
-
 
     document.getElementById("main-container").prepend(li);
 
@@ -71,27 +73,20 @@ submitButton.addEventListener("click", postMessage)
 
 function createPost(post, index) {
 
+
     return `<div id="card-">
         <h2 id="card-title">${post.title}</h2>
         <p id="card-body">${post.body}</p>
         <a id="card-tags">${post.tags}</a>
-
         <a id="cardReactions">${post.reactions}</a>
-
-        <a id="card-reactions">${post.reactions}</a>
-
-        <button id="likeButton">Like</button
+        <button onClick ="onClickLike" id="likeButton">Like</button
         </div>`
 
 }
-/*
-function onClickLike(index) {
-    console.log(index);
-}
-*/
-let reactionButton = document.getElementById("likeButton");
-reactionButton.innerText = "👍";
 
-reactionButton.addEventListener("click", function () {
-    cardReactions.innerText++;
-});
+function onClickLike(index) {
+
+
+}
+
+
