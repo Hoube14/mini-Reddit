@@ -45,6 +45,7 @@ function fetchPosts(posts) {
 
     }
 
+
 }
 
 function postMessage() {
@@ -53,6 +54,7 @@ function postMessage() {
         body: postInput.value,
         tags: postTags.value,
         reactions: 0,
+
     };
     posts.push(post);
     storePosts(posts);
@@ -73,7 +75,11 @@ function createPost(post, index) {
         <h2 id="card-title">${post.title}</h2>
         <p id="card-body">${post.body}</p>
         <a id="card-tags">${post.tags}</a>
+
         <a id="cardReactions">${post.reactions}</a>
+
+        <a id="card-reactions">${post.reactions}</a>
+
         <button id="likeButton">Like</button
         </div>`
 
