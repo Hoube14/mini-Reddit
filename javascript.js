@@ -3,6 +3,7 @@ let postButton = document.getElementById('postButton');
 let postInput = document.getElementById('postInput');
 let submitButton = document.getElementById('submitButton');
 let postedMessages = document.getElementById('postedMessages');
+let likeCount = 0;
 
 let posts = [];
 
@@ -11,14 +12,13 @@ if (localPosts !== null) {
     posts = JSON.parse(localPosts);
     fetchPosts(posts);
 } else {
-    postMessage();
+    createPost(posts);
 }
 
 function storePosts(posts) {
     localStorage.setItem("posts", JSON.stringify(posts));
     console.log(localStorage);
 }
-
 
 
 fetch('https://dummyjson.com/posts')
@@ -54,7 +54,7 @@ function postMessage() {
         title: postTitle.value,
         body: postInput.value,
         tags: postTags.value,
-        reactions: 0,
+        reactions: 1,
     };
     posts.push(post);
     storePosts(posts);
@@ -80,3 +80,5 @@ function createPost(post) {
         </div>`
 
 }
+
+
