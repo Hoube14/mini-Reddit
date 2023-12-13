@@ -3,7 +3,22 @@ let postButton = document.getElementById('postButton');
 let postInput = document.getElementById('postInput');
 let submitButton = document.getElementById('submitButton');
 let postedMessages = document.getElementById('postedMessages');
+let likeCount = 0;
 
+let posts = [];
+
+let localPosts = localStorage.getItem("posts");
+if (localPosts !== null) {
+    posts = JSON.parse(localPosts);
+    fetchPosts(posts);
+} else {
+    createPost(posts);
+}
+
+function storePosts(posts) {
+    localStorage.setItem("posts", JSON.stringify(posts));
+    console.log(localStorage);
+}
 
 fetch('https://dummyjson.com/posts')
     .then(function (res) {
@@ -28,16 +43,8 @@ function fetchPosts(posts) {
 
         li.innerHTML = createPost(post);
 
-
     }
 
-}
-
-function localStorage(post) {
-    localStorage.setitem();
-    localStorage.setitem();
-    localStorage.setitem();
-    localStorage.setitem();
 }
 
 function postMessage() {
@@ -45,8 +52,10 @@ function postMessage() {
         title: postTitle.value,
         body: postInput.value,
         tags: postTags.value,
+        reactions: 0,
     };
-
+    posts.push(post);
+    storePosts(posts);
     postsList.push(post);
 
     let li = document.createElement("li");
@@ -64,9 +73,15 @@ function createPost(post) {
         <h2 id="card-title">${post.title}</h2>
         <p id="card-body">${post.body}</p>
         <a id="card-tags">${post.tags}</a>
-        <a id="card-reactions">${post.reactions}</a>
+        <a id="cardReactions">${post.reactions}</a>
         <button id="likeButton">Like</button
         </div>`
 
-
 }
+
+let reactionButton = document.getElementById("likeButton");
+reactionButton.innerText = "👍";
+
+reactionButton.addEventListener("click", function () {
+    cardReactions.innerText++;
+});
