@@ -20,7 +20,6 @@ function storePosts(posts) {
     console.log(localStorage);
 }
 
-
 fetch('https://dummyjson.com/posts')
     .then(function (res) {
         return res.json();
@@ -48,13 +47,12 @@ function fetchPosts(posts) {
 
 }
 
-
 function postMessage() {
     let post = {
         title: postTitle.value,
         body: postInput.value,
         tags: postTags.value,
-        reactions: 1,
+        reactions: 0,
     };
     posts.push(post);
     storePosts(posts);
@@ -81,4 +79,10 @@ function createPost(post) {
 
 }
 
+let reactionButton = document.getElementById("likeButton");
+reactionButton.innerText = "👍";
 
+reactionButton.addEventListener("click", function () {
+    reactionButton.innerText++;
+    console.log(reactionButton);
+});
