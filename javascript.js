@@ -67,7 +67,7 @@ function postMessage() {
 }
 submitButton.addEventListener("click", postMessage)
 
-function createPost(post) {
+function createPost(post, index) {
 
     return `<div id="card-">
         <h2 id="card-title">${post.title}</h2>
@@ -78,7 +78,11 @@ function createPost(post) {
         </div>`
 
 }
-
+/*
+function onClickLike(index) {
+    console.log(index);
+}
+*/
 let reactionButton = document.getElementById("likeButton");
 reactionButton.innerText = "👍";
 
