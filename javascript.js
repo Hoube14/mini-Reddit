@@ -57,7 +57,6 @@ function renderPosts() {
 }
 
 
-
 function createHtmlPostElement(post, i) {
     return `<div id="card-">
         <h2 id="card-title">${post.title}</h2>
