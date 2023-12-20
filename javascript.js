@@ -1,97 +1,92 @@
-let postsList = [];
-let postButton = document.getElementById('postButton');
-let postInput = document.getElementById('postInput');
-let submitButton = document.getElementById('submitButton');
-let postedMessages = document.getElementById('postedMessages');
-let likeCount = 0;
 
 let posts = [];
+let submitPostButton = document.getElementById("submitButton");
 
-let localPosts = localStorage.getItem("posts");
-if (localPosts !== null) {
-    posts = JSON.parse(localPosts);
-    fetchPosts(posts);
-} else {
-    createPost(posts);
-}
+submitPostButton.addEventListener("click", addNewPost);
 
-function storePosts(posts) {
+function storePosts() {
+    localStorage.clear();
     localStorage.setItem("posts", JSON.stringify(posts));
-    console.log(localStorage);
 }
 
-fetch('https://dummyjson.com/posts')
-    .then(function (res) {
-        return res.json();
-    }).then(function (res) {
-        fetchPosts(res.posts);
-    });
+async function fetchPosts() {
+    let respons = await fetch("https://dummyjson.com/posts");
+    respons = await respons.json();
+    return respons.posts;
+}
 
-function fetchPosts(posts) {
-    // DOM
-    // Document Object Model
+async function init() {
 
-    let list = document.getElementById("main-container");
-    document.body.append(list);
+    let postsFromLocalStorage = localStorage.getItem("posts");
+    if (postsFromLocalStorage !== null) {
+        let parsedPosts = JSON.parse(postsFromLocalStorage);
+        if (parsedPosts.length > 0) {
+            posts = parsedPosts;
+        } else {
+            posts = await fetchPosts();
+        }
+    } else {
+        posts = await fetchPosts();
+    }
+    renderPosts();
+    savePostToLocalStorage();
+}
+
+function savePostToLocalStorage() {
+    localStorage.setItem("posts", JSON.stringify(posts));
+}
+
+function renderPosts() {
+
+    let mainContainerElement = document.getElementById("main-container");
+
+    mainContainerElement.innerHTML = "";
+
 
     for (let i = 0; i < posts.length; i++) {
+
+        let liElement = document.createElement("li");
+
         let post = posts[i];
-        postsList.push(post);
 
-        let li = document.createElement("li");
-        list.append(li);
+        liElement.innerHTML = createHtmlPostElement(post, i);
 
-        li.innerHTML = createPost(post);
-
+        mainContainerElement.prepend(liElement);
     }
-
 
 }
 
-function postMessage() {
+
+function createHtmlPostElement(post, i) {
+    return `<div id="card-">
+        <h2 id="card-title">${post.title}</h2>
+        <p id="card-body">${post.body}</p>
+        <a id="card-tags">${post.tags}</a>
+        <a id="cardReactions">${post.reactions}</a>
+        <button onClick="likeClicked(event.target.id)" id="${i}">Like</button
+        </div>`;
+}
+
+function addNewPost() {
     let post = {
         title: postTitle.value,
         body: postInput.value,
         tags: postTags.value,
         reactions: 0,
-
     };
     posts.push(post);
-    storePosts(posts);
-    postsList.push(post);
-
-    let li = document.createElement("li");
-    li.innerHTML = createPost(post);
-
-
-    document.getElementById("main-container").prepend(li);
-
-}
-submitButton.addEventListener("click", postMessage)
-
-function createPost(post) {
-
-    return `<div id="card-">
-        <h2 id="card-title">${post.title}</h2>
-        <p id="card-body">${post.body}</p>
-        <a id="card-tags">${post.tags}</a>
-
-        <a id="cardReactions">${post.reactions}</a>
-
-        <a id="card-reactions">${post.reactions}</a>
-
-        <button id="likeButton">Like</button
-        </div>`
+    renderPosts(posts);
+    storePosts();
 
 }
 
+function likeClicked(postId) {
+    let post = posts[postId];
+    post.reactions++;
+    renderPosts();
+    storePosts();
+}
 
-let reactionButton = document.getElementById("likeButton");
-reactionButton.innerText = "👍";
 
-reactionButton.addEventListener("click", function () {
-    cardReactions.innerText++;
-});
-
-
+init();
 
