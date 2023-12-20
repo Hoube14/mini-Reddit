@@ -10,9 +10,10 @@ function storePosts() {
 }
 
 async function fetchPosts() {
-    let respons = await fetch("https://dummyjson.com/posts");
+    let respons = await fetch("https://dummyjson.com/posts?limit=150");
     respons = await respons.json();
     return respons.posts;
+
 }
 
 async function init() {
@@ -29,11 +30,7 @@ async function init() {
         posts = await fetchPosts();
     }
     renderPosts();
-    savePostToLocalStorage();
-}
-
-function savePostToLocalStorage() {
-    localStorage.setItem("posts", JSON.stringify(posts));
+    storePosts();
 }
 
 function renderPosts() {
@@ -75,7 +72,7 @@ function addNewPost() {
         reactions: 0,
     };
     posts.push(post);
-    renderPosts(posts);
+    renderPosts();
     storePosts();
 
 }
